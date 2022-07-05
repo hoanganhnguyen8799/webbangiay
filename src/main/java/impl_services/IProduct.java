@@ -16,4 +16,5 @@ public interface IProduct {
 	void addNewProductSell(Product product);
 	void updateProductSell(Product product);
 	void deleteProductSell(int pid, int sellID);
+	public List<Product> findProductByName(String name);
 }

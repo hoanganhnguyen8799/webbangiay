@@ -385,6 +385,40 @@ String sql = "delete from product where id= ? and sell_ID=?";
 			}  
 		 }
 	}
+	@Override
+	public List<Product> findProductByName(String name) {
+		List<Product> list = new ArrayList<Product>();
+		String sql = "select * from product where [name] like '%?%'";
+		try {
+			connect = getConnection();
+			pres = connect.prepareStatement(sql);
+			pres.setString(1, name);
+			res = pres.executeQuery();
+			while(res.next()) {
+				list.add(new Product(res.getInt(1), res.getString(2), res.getString(3), res.getDouble(4), res.getString(5),
+						res.getString(6)));
+			}
+			return list;
+		} catch (Exception e) {
+		
+			e.printStackTrace();
+		}finally
+		 {
+			try {
+				if(res!=null)
+					res.close();
+				
+				if(pres!=null)
+					pres.close();
+				if(connect!=null)
+					connect.close();
+			} catch (SQLException e1) {
+				
+				e1.printStackTrace();
+			}  
+		 }
+		return null;
+	}
 	
 	
 }
