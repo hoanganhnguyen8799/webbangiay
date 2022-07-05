@@ -100,7 +100,7 @@
 
 				</ul>
 
-				<form class="form-inline my-2 my-lg-0" method="post">
+				<form action="search" class="form-inline my-2 my-lg-0" method="post">
 					<div class="input-group input-group-sm">
 						<input type="text" class="form-control" aria-label="Small" name="search"
 							aria-describedby="inputGroup-sizing-sm" placeholder="Search..." >
