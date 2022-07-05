@@ -105,12 +105,12 @@
 						<input type="text" class="form-control" aria-label="Small" name="search"
 							aria-describedby="inputGroup-sizing-sm" placeholder="Search..." >
 						<div class="input-group-append">
-							<button type="button" class="btn btn-secondary btn-number">
+							<button type="submit" class="btn btn-secondary btn-number">
 								<i class="fa fa-search"></i>
 							</button>
 						</div>
 					</div>
-
+					</form>
 
 
 
@@ -124,7 +124,7 @@
 					</c:if>
 
 
-				</form>
+				
 			</div>
 		</div>
 	</nav>

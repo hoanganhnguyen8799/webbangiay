@@ -226,13 +226,7 @@ public class ProductDAO extends DBConnect implements IProduct {
 
 		return null;
 	}
-	public static void main(String[] args) {
-		List<Product> list = new ProductDAO().getSellProduct(20);
-		System.out.println(list);
-		for (Product product : list) {
-			System.out.println(product);
-		}
-	}
+
 	@Override
 	public List<Product> getSellProduct(int accountID) {
 		List<Product> list = new ArrayList<Product>();
@@ -388,12 +382,12 @@ String sql = "delete from product where id= ? and sell_ID=?";
 	@Override
 	public List<Product> findProductByName(String name) {
 		List<Product> list = new ArrayList<Product>();
-		String sql = "select * from product where [name] like '%?%'";
+		String sql = "select * from product where [name] like ?";
 		try {
 			connect = getConnection();
 			pres = connect.prepareStatement(sql);
-			pres.setString(1, name);
-			res = pres.executeQuery();
+			pres.setString(1, "%"+name+"%"); 
+			res= pres.executeQuery();
 			while(res.next()) {
 				list.add(new Product(res.getInt(1), res.getString(2), res.getString(3), res.getDouble(4), res.getString(5),
 						res.getString(6)));
@@ -420,5 +414,11 @@ String sql = "delete from product where id= ? and sell_ID=?";
 		return null;
 	}
 	
-	
+	public static void main(String[] args) {
+		List<Product> list = new ProductDAO().findProductByName("adidas");
+		System.out.println(list);
+		for (Product product : list) {
+			System.out.println(product);
+		}
+	}
 }

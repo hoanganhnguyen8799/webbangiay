@@ -40,8 +40,10 @@ public class SearchController extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		response.setContentType("text/html;charset=UTF-8");
 		request.setCharacterEncoding("UTF-8");
 		String search = request.getParameter("search");
+		System.out.println(search);
 		List<Product> listP = new ProductDAO().findProductByName(search);
 		List<Category> listC = new CategoryDAO().getAllCategory();
 		Product lastP = new ProductDAO().getLastProduct();
